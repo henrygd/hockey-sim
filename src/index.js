@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import { randomTeam } from './helpers';
+import { randomTeam, isIE } from './helpers';
 
 import SimContainer from './components/SimContainer';
 import SimModal from './components/SimModal';
@@ -42,9 +42,17 @@ function run() {
 
 function _init() {
 	rootElement.className = 'scanlines';
+	// internet explorer / edge style fix
+	if (isIE) {
+		var style = document.createElement('STYLE');
+		style.innerHTML = 'body{font-family:Segoe UI,Arial}.ranking-team-info{background-position-x:-140%}'
+		document.head.appendChild(style); // document.getElementsByTagName('head')[0]
+	}
+	// run render
 	run();
 }
 
+// fetch updated team ratings (& logos / colors if needed) before initializing app
 fetch(`/js/teamratings.json?${+new Date()}`).then(r => r.json())
   .then(data => {
 		// grabbed teams successfully
@@ -63,7 +71,7 @@ fetch(`/js/teamratings.json?${+new Date()}`).then(r => r.json())
 				fetch('/js/localStoreTeams.json').then(r => r.json())
 					.then(teamData => {
 						Object.keys(teamData).forEach(function(teamName) {
-							var arr = teamData[teamName];
+							const arr = teamData[teamName];
 							localStorage['color_' + teamName] = arr[0];
 							localStorage['logo_' + teamName] = arr[1];
 						})

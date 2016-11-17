@@ -106,3 +106,8 @@ export const simGame = (teamOne, teamTwo, gamesNum=500) => {
 	teamTwo.avgScore = (teamTwo.totalPoints / gamesNum).toFixed(1);
 	return { teamOne, teamTwo };
 };
+
+// custom detect IE
+export const isIE = ['MSIE ', 'Trident/', 'Edge/'].filter(
+		str => window.navigator.userAgent.indexOf(str) > -1
+	).length
