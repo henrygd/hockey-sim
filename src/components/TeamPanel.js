@@ -66,10 +66,10 @@ const TeamPanel = React.createClass({
 	},
 	adjustMeter(rating) {
 		var meterColor;
-		if (rating < 65) {
+		if (rating < 75) {
 			meterColor = '229, 57, 53';
 		} else {
-			meterColor = rating < 80 ? '243, 182, 0' : '35, 182, 53';
+			meterColor = rating < 85 ? '243, 182, 0' : '35, 182, 53';
 		}
 		rating = rating < 10 ? rating += '0' : rating;
 		return {
