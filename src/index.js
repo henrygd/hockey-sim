@@ -52,32 +52,44 @@ function _init() {
 	run();
 }
 
-// fetch updated team ratings (& logos / colors if needed) before initializing app
-fetch(`/js/teamratings.json?${+new Date()}`).then(r => r.json())
-  .then(data => {
-		// grabbed teams successfully
-		window.teamRatings = data[0];
-		window.lastUpdate = data[1];
-		window.teamKeys = Object.keys(data[0]);
-		// check if team logos are pre-cached in localStorage
-		if (!localStorage) {
-			return alert('To use this website, please download a browser that supports local storage.');
-		} else {
-			if (localStorage.color_Wild) {
-				// already have logos, go on with loading the page
+const { localStorage } = window
+
+const storeTeams = data => {
+	window.teamRatings = data[0];
+	window.lastUpdate = data[1];
+	window.teamKeys = Object.keys(data[0]);
+	// check if team logos are pre-cached in localStorage
+	if (localStorage.color_Wild) {
+		// already have logos, go on with loading the page
+		setTimeout(_init, 500);
+	} else {
+		// get logos
+		fetch('/js/localStoreTeams.json').then(r => r.json())
+			.then(teamData => {
+				Object.keys(teamData).forEach(function(teamName) {
+					const arr = teamData[teamName];
+					localStorage['color_' + teamName] = arr[0];
+					localStorage['logo_' + teamName] = arr[1];
+				})
 				setTimeout(_init, 500);
-			} else {
-				// get logos
-				fetch('/js/localStoreTeams.json').then(r => r.json())
-					.then(teamData => {
-						Object.keys(teamData).forEach(function(teamName) {
-							const arr = teamData[teamName];
-							localStorage['color_' + teamName] = arr[0];
-							localStorage['logo_' + teamName] = arr[1];
-						})
-						setTimeout(_init, 500);
-					})
-			}
-		}
-  })
-  .catch(e => alert('Error: Could not fetch team rankings.'))
+			})
+	}
+}
+
+if (!localStorage) {
+	alert('To use this website, please download a browser that supports local storage.');
+} else {
+	// fetch updated team ratings (& logos / colors if needed) before initializing app
+	fetch(`/js/teamratings.json?${+new Date()}`).then(r => r.json())
+		.catch(e => alert("Error: Couldn't fetch current team ratings. Using local copy if available."))
+	  .then(data => {
+	  	if (!data) {
+	  		const { teamratings } = localStorage;
+	  		return teamratings ? storeTeams(JSON.parse(teamratings)) : false;
+	  	}
+			// grabbed teams successfully
+			// add current ratings to localstorage for offline fallback
+			localStorage.teamratings = JSON.stringify(data);
+			storeTeams(data);
+	  });
+};

@@ -2,7 +2,7 @@
 
 View video-game-like ratings and simulate matchups between any two teams based on season stats.
 
-[https://hockeysim.netlify.com](https://hockeysim.netlify.com)
+[https://hockeysim.henrygd.me](https://hockeysim.henrygd.me)
 
 ![screen shot](https://i.imgur.com/BTsgwcR.jpg)
 
