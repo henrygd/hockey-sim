@@ -51,10 +51,10 @@ const TeamPanel = React.createClass({
 	},
 	getOverallColor() {
 		const overall = this.props.team[1][0];
-		if (overall < 65) {
+		if (overall < 75) {
 			return '229, 57, 53';
 		} else {
-			return overall < 80 ? '243, 182, 0' : '35, 182, 53';
+			return overall < 85 ? '243, 182, 0' : '35, 182, 53';
 		}
 	},
 	getThisTeam(e) {

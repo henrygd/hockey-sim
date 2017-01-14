@@ -132,7 +132,7 @@ function calculateRatings() {
 		const teamStats = teamObj[teamNames[teamName]];
 		var offense, defense, powerPlay, penaltyKill, goaltending, discipline;
 		// general variables
-		const { gamesPlayed, pointPctg, shotAttemptsPctg, shotAttemptsPctgClose } = teamStats.general;
+		const { gamesPlayed, shotAttemptsPctg, shotAttemptsPctgClose } = teamStats.general;
 		// offense variables
 		const { shotsForPerGame, goalsForPerGame, fiveOnFiveShootingPctg } = teamStats.offense;
 		// defense variables
@@ -140,7 +140,7 @@ function calculateRatings() {
 		// penalties variables
 		const { ppPctg, pkPctg } = teamStats.penalties;
 		// disipline variables
-		const { faceoffWinPctg, penaltiesPer60Minutes, penaltiesDrawnPer60Minutes, blockedShots, giveaways, takeaways } = teamStats.discipline;
+		const { faceoffWinPctg, penaltiesPer60Minutes, penaltiesDrawnPer60Minutes, giveaways, takeaways } = teamStats.discipline;
 		// goaltending variables
 		const { fiveOnFiveSavePctg } = teamStats.goaltending;
 		// offense / defense multiplier
@@ -152,13 +152,13 @@ function calculateRatings() {
 		defense = ((shotsAgainstPerGame * goalsAgainstPerGame) * -1 - 75) * offDefMultiplier;
 		ratingArr.push(defense)
 		// calc powerPlay
-		powerPlay = ppPctg + 0.4;
+		powerPlay = ppPctg + 0.25;
 		ratingArr.push(powerPlay)
 		// calc penaltyKill
-		penaltyKill = pkPctg;
+		penaltyKill = pkPctg - 0.35;
 		ratingArr.push(penaltyKill)
 		// calc goaltending
-		goaltending = fiveOnFiveSavePctg - 0.7;
+		goaltending = fiveOnFiveSavePctg - 0.8;
 		ratingArr.push(goaltending);
 		// calc discipline
 		const penaltyMargin  = penaltiesPer60Minutes - penaltiesDrawnPer60Minutes;

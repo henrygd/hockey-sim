@@ -62,8 +62,8 @@ const SimContainer = React.createClass({
 					{teamH2(teamOne)}
 					<span>vs</span>
 					{teamH2(teamTwo)}
+					<Link to={`/${teamOne}/${teamTwo}/sim`}><button className="btn-sim skater-icon">SIMULATE MATCHUP</button></Link>
 				</div>
-				<Link to={`/${teamOne}/${teamTwo}/sim`}><button className="btn-sim skater-icon">SIMULATE MATCHUP</button></Link>
 
 				<CompareTeams teams={{teamOne, teamTwo}} switchPage={this.switchPage} />
 

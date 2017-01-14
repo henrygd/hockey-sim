@@ -837,7 +837,7 @@ ul.select-options h4 {
 				/*display: none*/
 				transform: rotateZ(-11deg);
 				text-align: center;
-				opacity: 1;
+				opacity: .8;
 				font-size: 5em;
 				margin: 0 0 .5em;
 				white-space: normal;
@@ -846,12 +846,28 @@ ul.select-options h4 {
 			text-align: center;
 		}
 		#sim_container {
-				padding: 4em 0 1em;
+				padding: 4em 0 10em;
 				height: auto;
 				overflow: hidden;
 		}
+		.team-matchup {
+	    position: fixed!important;
+	    bottom: 0!important;
+	    background: rgba(51, 51, 51, 0.95);
+	    z-index: 99;
+	    width: 100%!important;
+	    left: 0!important;
+	    right: 0!important;
+	    padding: .6em 0 0;
+	    max-width: none!important;
+	    font-size: .8em;
+	    box-shadow: 0 0 1em rgba(0, 0, 0, 0.7);
+		}
+		.team-matchup a {
+			display: block;
+		}
 		#sim_container>* {
-				position: relative!important;
+				position: relative;
 				max-width: 96%;
 				width: 100%;
 				left: auto;
@@ -861,7 +877,7 @@ ul.select-options h4 {
 		}
 		.btn-sim {
 				width: auto!important;
-				margin: 1em 0
+				margin: .6em 0
 		}
 		.compare-strengths {
 				margin: 6em 0 0;
@@ -907,7 +923,7 @@ ul.select-options h4 {
 	}
 	.heading {
 		font-size: 15vw;
-		margin: .3em 0 1em;
+		margin: .2em 0 .7em;
 	}
 	.ranking-team-info {
 		padding: 1.3rem 3.2rem;
