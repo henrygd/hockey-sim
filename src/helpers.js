@@ -1,5 +1,3 @@
-//////// HELPER FUNCTIONS ///////////
-
 export const setPageTitle = titleContent => {
 	document.title = `HOCKEY SIM | ${titleContent}`;
 };

@@ -229,17 +229,20 @@ select {
 .random-btn:active {
 		opacity: .6
 }
-div.team-matchup {
+.team-matchup {
 		width: 42vw;
 		font-weight: 700;
 		color: #fff;
 		transition: opacity .3s;
 		text-align: center
 }
-div.team-matchup * {
+.team-matchup a {
+	display: block;
+}
+.team-matchup * {
 		display: inline-block
 }
-div.team-matchup h2 {
+.team-matchup h2 {
 		font-size: 1.8em;
 		text-transform: uppercase;
 		box-shadow: 0 0 .3em rgba(0, 0, 0, .4);
@@ -249,7 +252,7 @@ div.team-matchup h2 {
 		border-radius: 2px;
 		text-shadow: 1px 1px 1px rgba(0, 0, 0, .25)
 }
-div.team-matchup h2:before {
+.team-matchup h2:before {
 		content: '';
 		position: absolute;
 		border: 1px solid rgba(255, 255, 255, .5);
@@ -259,7 +262,7 @@ div.team-matchup h2:before {
 		bottom: .12em;
 		border-radius: 2px
 }
-div.team-matchup span {
+.team-matchup span {
 		font-weight: 400;
 		font-size: 1.8em;
 		letter-spacing: -1px;
@@ -397,7 +400,7 @@ div.team-matchup span {
 .compare-strengths .panel-cell:first-of-type {
 		border-radius: 0 2px 0 0
 }
-.compare-strengths .panel-cell div.comp-strength-logo {
+.compare-strengths .panel-cell .comp-strength-logo {
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -862,9 +865,6 @@ ul.select-options h4 {
 	    max-width: none!important;
 	    font-size: .8em;
 	    box-shadow: 0 0 1em rgba(0, 0, 0, 0.7);
-		}
-		.team-matchup a {
-			display: block;
 		}
 		#sim_container>* {
 				position: relative;

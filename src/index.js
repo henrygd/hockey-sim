@@ -10,6 +10,7 @@ import Rankings from './components/Rankings';
 import './index.css';
 
 const rootElement = document.getElementById('root');
+const { localStorage } = window;
 
 const checkTeamParams = (nextState, replace) => {
 	const { teamOne, teamTwo } = nextState.params;
@@ -52,8 +53,6 @@ function _init() {
 	run();
 }
 
-const { localStorage } = window
-
 const storeTeams = data => {
 	window.teamRatings = data[0];
 	window.lastUpdate = data[1];
@@ -61,7 +60,7 @@ const storeTeams = data => {
 	// check if team logos are pre-cached in localStorage
 	if (localStorage.color_Wild) {
 		// already have logos, go on with loading the page
-		setTimeout(_init, 500);
+		setTimeout(_init, 300);
 	} else {
 		// get logos
 		fetch('/js/localStoreTeams.json').then(r => r.json())
@@ -71,7 +70,7 @@ const storeTeams = data => {
 					localStorage['color_' + teamName] = arr[0];
 					localStorage['logo_' + teamName] = arr[1];
 				})
-				setTimeout(_init, 500);
+				setTimeout(_init, 300);
 			})
 	}
 }
