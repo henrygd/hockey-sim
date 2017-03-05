@@ -931,3 +931,31 @@ ul.select-options h4 {
 		background-size: auto 65%;
 	}
 }
+
+@media (min-width: 100em) {
+	#root {
+		display: flex;
+	}
+	#sim_container {
+		max-width: 100em;
+		max-height: 59em;
+		margin: auto;
+	}
+	.team-panel {
+		left: 2%;
+    height: 97%;
+    width: 29%;
+	}
+	.team-panel:nth-of-type(2) {
+		right: 2%;
+	}
+	.compare-strengths {
+		bottom: 2%;
+		left: auto;
+		width: 35%;
+	}
+	.rankings {
+		max-width: 80em;
+		margin: auto;
+	}
+}
