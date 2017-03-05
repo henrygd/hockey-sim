@@ -938,7 +938,7 @@ ul.select-options h4 {
 	}
 	#sim_container {
 		max-width: 100em;
-		max-height: 59em;
+		max-height: 56.25em;
 		margin: auto;
 	}
 	.team-panel {
@@ -955,7 +955,25 @@ ul.select-options h4 {
 		width: 35%;
 	}
 	.rankings {
-		max-width: 80em;
+		max-width: 86em;
 		margin: auto;
+	}
+	.ranking-team-info {
+		padding: 1.5em 6em;
+	}
+	.random-btn {
+		top: .7em;
+		right: .7em;
+		padding: 1em;
+		font-size: 1.3em;
+	}
+	.heading {
+	  top: 6%;
+	}
+	.meter {
+		height: .6em;
+	}
+	.team-panel, .team-matchup {
+		font-size: 1.1em;
 	}
 }
