@@ -80,7 +80,7 @@ if (!localStorage) {
 } else {
 	// fetch updated team ratings (& logos / colors if needed) before initializing app
 	fetch(`/js/teamratings.json?${+new Date()}`).then(r => r.json())
-		.catch(e => alert("Error: Couldn't fetch current team ratings. Using local copy if available."))
+		.catch(e => console.warn("Couldn't fetch current team ratings. Using local copy if available."))
 	  .then(data => {
 	  	if (!data) {
 	  		const { teamratings } = localStorage;
